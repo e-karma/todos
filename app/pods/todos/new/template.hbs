@@ -1,0 +1,12 @@
+<form {{action "save" on="submit"}}>
+  <p>
+    <label>New Todo
+      {{input value="title"}}
+    </label>
+  </p>
+  <input type="submit" value="Save"/>
+  <button {{action "cancel"}}>Cancel</button>
+</form>
+
+
+{{outlet}}

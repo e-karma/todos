@@ -1,0 +1,190 @@
+@import "compass";
+@import "susy";
+@import "breakpoint";
+
+@mixin cf {
+  &:after{
+    content: "";
+    display: block;
+    clear:both;
+  }
+}
+
+@font-face {
+  font-family: Open-Sans;
+  src: url('/assets/fonts/OpenSans-Regular.ttf')
+}
+$susy: (
+  columns:12,
+  math: fluid,
+  output: float, 
+  gutters: 1/4,
+  debug: (image: show),
+  global-box-sizing:border-box
+);
+
+$xs: 320px;
+$sm:640px;
+$md:768px;
+$lg:992px;
+$xl:1280px;
+
+$base-color: #54bede;
+
+
+body {
+  font-family: open-sans;
+  margin: 0px;
+  background:#999;
+  @include container(100%);
+}
+nav{
+  @include span(12);
+  background-color:#54bede;
+}
+a {
+  color: #2980b9;
+  text-decoration: none;
+}
+aside ul {
+  padding: 0;
+  li {
+    list-style: none;
+    margin: 0;
+    a {
+      display:block;
+      padding: 10px 5%;
+      border-bottom: solid 1px #95a5a6;
+    }
+  }
+}
+aside{
+  @include span(2);
+  background-color: #fff;
+  height:auto;
+}
+
+main{
+  @include span(10 at 4);
+  background-color: rgba(#555, .8);
+  height:100vh;
+}
+form {
+  background-color: #54bede;
+  @include span(2);
+  height:auto;
+  padding:1em;
+  &:input[text]{
+    columns:2;
+    rows:2;
+  }
+}
+.wrap {
+  @include container(100%);
+}
+
+.short-term, .medium-term, .long-term {
+  @include span(12);
+  height:100vh;
+  background-color:scale-lightness(#54bede,30%);
+  
+}
+
+.short-term, .medium-term, .long-term,  label {
+  text-align:center;
+  color: #faffff;
+}
+
+.long-term {
+  @include span (4 last);
+}
+
+.st-todo, .mt-todo, .lt-todo {
+  @include cf;
+  @include span (4);
+  height:15vh;
+  margin:.7em .7em 0 .7em;
+}
+.st-todo {
+  background-color: scale-lightness( #54bede, -15%);
+}
+.mt-todo {
+  background-color: scale-lightness( #54bede, -30%);
+}
+.lt-todo {
+  background-color: scale-lightness( #54bede, -45%);
+}
+
+.add {
+  line-height:24px;
+}
+
+
+// Responsive Design Begins //
+
+@include breakpoint(320px){
+  aside{
+    @include span(2 at 1);
+  }
+  main{
+    @include span(10 last);
+    background-color: rgba(#555, .8);
+    height:100vh;
+    .short-term, .medium-term, .long-term {
+      @include span(12);
+      height:auto;
+    }
+  }
+}
+
+@include breakpoint(500px){
+  aside{
+    @include span(2 at 1);
+  }
+  main{
+    @include span(10 last);
+    background-color: rgba(#555, .8);
+    height:100vh;
+    .short-term, .medium-term, .long-term {
+      @include span(12);
+      height:auto;
+    }
+    .medium-term{
+      @include span(6 last);
+    }
+    .long-term {
+      @include span(6 first);
+    }
+  }
+}
+
+@include breakpoint(768px){
+  aside {
+    @include span(2 at 1);
+  }
+  main {
+    @include span(10 last);
+    .background-color: rgba(#555, .8);
+    height:100vh;
+    .short-term, .medium-term, .long-term {
+      @include span(12);
+      height:auto;
+    }
+    .long-term {
+      @include span(4 last);
+    }
+  }
+}
+@include breakpoint(1280px){
+  aside {
+    @include span(2 at 1);
+  }
+  main {
+    @include span(10 last);
+    .short-term, .medium-term, .long-term, {
+      @include span(12 of 12);
+    }
+  }
+}
+    
+
